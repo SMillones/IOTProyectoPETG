@@ -1,0 +1,32 @@
+#include <AccelStepper.h>
+
+// Pines para el A4988
+#define STEP_PIN 5
+#define DIR_PIN 4
+
+// Inicializa la biblioteca para el A4988 en modo DRIVER
+AccelStepper stepper(AccelStepper::DRIVER, STEP_PIN, DIR_PIN);
+
+const int stepsPerRevolution = 200;  // Motor NEMA 17 suele tener 200 pasos por revolución
+
+void setup() {
+  Serial.begin(115200);
+  
+  // Configura la velocidad máxima y aceleración
+  stepper.setMaxSpeed(1000);  // Ajusta según tus necesidades
+  stepper.setAcceleration(500);  // Ajusta según tus necesidades
+  
+  // Mueve el motor una revolución completa
+  stepper.moveTo(stepsPerRevolution);
+}
+
+void loop() {
+  // Cambia de dirección cuando se alcanza el objetivo
+  if (stepper.distanceToGo() == 0) {
+    stepper.moveTo(-stepper.currentPosition());
+    Serial.println("Cambiando dirección");
+  }
+  
+  // Mueve el motor paso a paso
+  stepper.run();
+}
