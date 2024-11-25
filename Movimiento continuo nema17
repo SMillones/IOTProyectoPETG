@@ -1,0 +1,27 @@
+/*
+Ejemplo para controlar el motor nema 17 junto al driver A4988, 
+junto a la libreria AccelStepper (makerguide)
+*/
+
+// Incluimos la libreria
+#include "AccelStepper.h"
+
+// Definimos la coneccion del motore y el tipo de interfaz, al usar el driver tiene que esta en 1
+#define dirPin 2
+#define stepPin 3
+#define motorInterfaceType 1
+
+// creamos una nueva instancia para la clase AccelSteppere
+AccelStepper stepper = AccelStepper(motorInterfaceType, stepPin, dirPin);
+
+void setup() {
+  // Set the maximum speed in steps per second:
+  stepper.setMaxSpeed(1000);
+}
+
+void loop() {
+  // Set the speed in steps per second:
+  stepper.setSpeed(400);
+  // Step the motor with a constant speed as set by setSpeed():
+  stepper.runSpeed();
+}
