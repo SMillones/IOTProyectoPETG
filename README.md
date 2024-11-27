@@ -33,6 +33,9 @@ EL A4988 necesita un voltaje de suministro lógico (3-5.5V) para el controlador 
 ## Diagrama 
 ![Screenshot 2024-11-25 083418](https://github.com/user-attachments/assets/a3671aa2-0334-475b-a1b3-2c8f04ef371b)
 
+## Profesor guia
+- Ignacio Pérez
+
 ## Integrantes 
 - Ethan Araya
 - Sergio Millones
